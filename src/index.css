@@ -1,0 +1,457 @@
+/* ============================================================
+   FRESHMART — Global Design System & Styling Foundation
+   Stage 2: Tokens, Typography, Reset, Accessibility
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ------------------------------------------------------------
+   TAILWIND V4 THEME — Brand Colors, Typography & Design Tokens
+   All --color-* variables become Tailwind utility classes:
+   bg-forest-green, text-charcoal, border-sage, etc.
+   ------------------------------------------------------------ */
+@theme {
+  /* ── Brand Palette ─────────────────────────────────────── */
+  --color-forest-green:    #203F32;
+  --color-sage-green:      #8DA795;
+  --color-warm-cream:      #F7F5EF;
+  --color-white:           #FFFFFF;
+  --color-deep-charcoal:   #242B26;
+  --color-muted-citrus:    #D9E8A3;
+  --color-soft-alert:      #E06D53;
+
+  /* ── Semantic Tokens ───────────────────────────────────── */
+  --color-background:      #F7F5EF;
+  --color-surface:         #FFFFFF;
+  --color-primary:         #203F32;
+  --color-primary-hover:   #1a3328;
+  --color-primary-light:   #2d5544;
+  --color-text:            #242B26;
+  --color-text-muted:      #5C6E61;  /* Contrast vs #F7F5EF: 4.99:1 — WCAG AA for all text sizes */
+  --color-text-subtle:     #9EAD9F;  /* Contrast: 2.16:1 — DECORATIVE ONLY. Do NOT use for any
+                                         readable text (captions, labels, metadata, timestamps).
+                                         Reserved for dividers, icon fills, background tints only. */
+  --color-border:          #E2E8E4;
+  --color-border-subtle:   #EEF1EF;
+  --color-accent:          #D9E8A3;
+  --color-accent-dark:     #bdd47a;
+  --color-error:           #E06D53;
+  --color-error-light:     #FDF0ED;
+  --color-success:         #3A7D5A;
+  --color-success-light:   #EDF7F2;
+  --color-overlay:         rgba(36, 43, 38, 0.48);
+
+  /* ── Typography — Font Families ────────────────────────── */
+  --font-heading: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+
+  /* ── Typography — Font Sizes ────────────────────────────── */
+  --text-display:  clamp(2.5rem, 5vw, 3.75rem);   /* 40–60px: hero headline */
+  --text-h1:       clamp(2rem, 4vw, 3rem);         /* 32–48px */
+  --text-h2:       clamp(1.625rem, 3vw, 2.25rem);  /* 26–36px */
+  --text-h3:       clamp(1.25rem, 2.5vw, 1.625rem);/* 20–26px */
+  --text-h4:       1.25rem;                         /* 20px */
+  --text-body-lg:  1.125rem;                        /* 18px */
+  --text-body:     1rem;                            /* 16px */
+  --text-body-sm:  0.875rem;                        /* 14px */
+  --text-caption:  0.75rem;                         /* 12px */
+  --text-label:    0.6875rem;                       /* 11px */
+
+  /* ── Typography — Line Heights ──────────────────────────── */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed:1.65;
+  --leading-loose:  1.8;
+
+  /* ── Typography — Font Weights ──────────────────────────── */
+  --font-weight-light:    300;
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* ── Layout Tokens ──────────────────────────────────────── */
+  --container-max:    1280px;
+  --container-narrow:  896px;
+  --container-tight:   672px;
+  --gutter-xs:        1rem;      /* 16px — mobile */
+  --gutter-sm:        1.25rem;   /* 20px — mobile wide */
+  --gutter-md:        1.5rem;    /* 24px — tablet */
+  --gutter-lg:        2rem;      /* 32px — desktop */
+  --gutter-xl:        2.5rem;    /* 40px — wide desktop */
+
+  /* ── Section Spacing ────────────────────────────────────── */
+  --space-section:    5rem;      /* 80px desktop */
+  --space-section-sm: 3.5rem;    /* 56px tablet */
+  --space-section-xs: 2.5rem;    /* 40px mobile */
+
+  /* ── Border Radius ──────────────────────────────────────── */
+  --radius-xs:    4px;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;    /* product cards */
+  --radius-xl:    24px;    /* hero, banner cards */
+  --radius-2xl:   32px;
+  --radius-full:  9999px;  /* pill buttons, badges */
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(32, 63, 50, 0.05);
+  --shadow-sm: 0 1px 4px rgba(32, 63, 50, 0.07), 0 1px 2px rgba(32, 63, 50, 0.05);
+  --shadow-md: 0 4px 12px rgba(32, 63, 50, 0.09), 0 2px 4px rgba(32, 63, 50, 0.06);
+  --shadow-lg: 0 8px 24px rgba(32, 63, 50, 0.11), 0 4px 8px rgba(32, 63, 50, 0.07);
+  --shadow-xl: 0 16px 48px rgba(32, 63, 50, 0.13), 0 8px 16px rgba(32, 63, 50, 0.08);
+  --shadow-inset: inset 0 1px 3px rgba(32, 63, 50, 0.08);
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --duration-fast:   120ms;
+  --duration-base:   220ms;
+  --duration-slow:   380ms;
+  --duration-slower: 600ms;
+  --ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring:     cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Focus Ring ─────────────────────────────────────────── */
+  --focus-ring-color:  rgba(32, 63, 50, 0.4);
+  --focus-ring-offset: 2px;
+  --focus-ring-width:  3px;
+
+  /* ── Z-Index Scale ──────────────────────────────────────── */
+  --z-below:   -1;
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+}
+
+/* ------------------------------------------------------------
+   GLOBAL RESET & BASE STYLES
+   ------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scrolling — disabled when user prefers reduced motion */
+  scroll-behavior: smooth;
+  /* Prevent font scaling on orientation change in iOS Safari */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Consistent tab size */
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  /* Smooth font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  /* Clip horizontal overflow without creating a scroll container.
+     'clip' (unlike 'hidden') does NOT create a new BFC/scroll container,
+     so position:sticky on child elements is unaffected. */
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+/* ------------------------------------------------------------
+   TYPOGRAPHY BASE
+   ------------------------------------------------------------ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  /* Balanced text wrapping where supported */
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); font-weight: var(--font-weight-semibold); }
+h5 { font-size: var(--text-body-lg); font-weight: var(--font-weight-semibold); }
+h6 { font-size: var(--text-body); font-weight: var(--font-weight-semibold); }
+
+p {
+  line-height: var(--leading-relaxed);
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+/* ── Type Utility Classes ───────────────────────────────── */
+
+.text-display {
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.text-heading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-snug);
+}
+
+.text-label-uppercase {
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   LINKS
+   ------------------------------------------------------------ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------
+   MEDIA DEFAULTS
+   ------------------------------------------------------------ */
+
+img,
+video,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  /* Prevents alt text from overflowing broken image containers */
+  object-fit: cover;
+}
+
+svg {
+  overflow: visible;
+  fill: currentColor;
+}
+
+/* ------------------------------------------------------------
+   FORM ELEMENT INHERITANCE
+   ------------------------------------------------------------ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+input,
+textarea {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+/* ------------------------------------------------------------
+   LIST DEFAULTS
+   ------------------------------------------------------------ */
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ------------------------------------------------------------
+   ACCESSIBLE FOCUS INDICATORS
+   Keyboard-only focus (not shown on mouse click via :focus-visible)
+   ------------------------------------------------------------ */
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-primary);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 calc(var(--focus-ring-width) + var(--focus-ring-offset)) var(--focus-ring-color);
+}
+
+/* Remove default focus ring on mouse click but keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ── Component-specific focus overrides ─────────────────── */
+
+button:focus-visible,
+a:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-primary);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset),
+              0 0 0 3px rgba(32, 63, 50, 0.15);
+}
+
+/* ------------------------------------------------------------
+   TEXT SELECTION STYLING
+   ------------------------------------------------------------ */
+
+::selection {
+  background-color: var(--color-muted-citrus);
+  color: var(--color-primary);
+}
+
+::-moz-selection {
+  background-color: var(--color-muted-citrus);
+  color: var(--color-primary);
+}
+
+/* ------------------------------------------------------------
+   SCROLLBAR STYLING (Webkit — Chrome, Safari, Edge)
+   ------------------------------------------------------------ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-sage-green);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary);
+}
+
+/* ------------------------------------------------------------
+   LAYOUT UTILITY CLASSES
+   Shared layout primitives for future components
+   ------------------------------------------------------------ */
+
+/* Page container: centers content with max-width + horizontal gutters */
+.container-page {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter-xs);
+}
+
+@media (min-width: 480px) {
+  .container-page { padding-inline: var(--gutter-sm); }
+}
+
+@media (min-width: 768px) {
+  .container-page { padding-inline: var(--gutter-md); }
+}
+
+@media (min-width: 1024px) {
+  .container-page { padding-inline: var(--gutter-lg); }
+}
+
+@media (min-width: 1280px) {
+  .container-page { padding-inline: var(--gutter-xl); }
+}
+
+/* Narrow container for text-heavy sections (newsletter, etc.) */
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--gutter-xs);
+}
+
+@media (min-width: 768px) {
+  .container-narrow { padding-inline: var(--gutter-md); }
+}
+
+/* Section vertical spacing */
+.section-padding {
+  padding-block: var(--space-section-xs);
+}
+
+@media (min-width: 768px) {
+  .section-padding { padding-block: var(--space-section-sm); }
+}
+
+@media (min-width: 1024px) {
+  .section-padding { padding-block: var(--space-section); }
+}
+
+/* ------------------------------------------------------------
+   REDUCED-MOTION SUPPORT
+   Respect user OS preference — disable all non-essential motion
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   PRINT BASELINE
+   ------------------------------------------------------------ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+}
