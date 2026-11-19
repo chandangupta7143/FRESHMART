@@ -2,6 +2,8 @@
 
 A modern, responsive grocery storefront homepage built with React 19, Tailwind CSS v4, and Framer Motion.
 
+**Live Demo:** [https://freshmart-khaki-five.vercel.app/](https://freshmart-khaki-five.vercel.app/)
+
 Designed with an editorial forest-green and warm-cream aesthetic, focusing on clean typography, smooth transitions, and accessible UI.
 
 ---
